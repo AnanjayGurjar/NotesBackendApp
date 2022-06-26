@@ -57,7 +57,7 @@ const signin = async (req, res ) => {
 
         //token generation
         const token = jwt.sign({email: existingUser.email, id: existingUser._id}, process.env.SECRET_KEY);      //_id is the id given by the mongodb to the user
-        res.status(201).json({user: existingUser, token: token});
+        res.status(200).json({user: existingUser, token: token});
 
     } catch (error) {
         console.log(error);
