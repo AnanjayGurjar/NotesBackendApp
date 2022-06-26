@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 
-require('dotenv').config
+require('dotenv').config();
 
 const auth = (req, res, next) => {
 
@@ -9,6 +9,7 @@ const auth = (req, res, next) => {
         if(token){
             token = token.split(" ")[1];
             let user = jwt.verify(token, process.env.SECRET_KEY);
+            //we have added the user id to this req object, hence it will be avaiable to the next's req
             req.userId = user.id;
 
 
@@ -20,9 +21,7 @@ const auth = (req, res, next) => {
 
     } catch (error) {
         console.log(error);
-        
     }
-
 }
 
 module.exports = {auth};
